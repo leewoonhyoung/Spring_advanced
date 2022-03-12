@@ -1,5 +1,6 @@
 package hello.advanced.app.v0;
 
+import hello.advanced.trace.TraceId;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,4 +16,5 @@ public class OrderControllerV0 {
         orderService.orderItem(itemId);
         return "hello";
     }
+
 }
