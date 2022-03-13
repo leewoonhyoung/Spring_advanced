@@ -21,6 +21,15 @@ public class HelloTraceV2 {
         return new TraceStatus(traceId, startTimeMs,message);
     }
 
+    public void end(TraceStatus status){
+        complete(status, null);
+    }
+
+
+    public void exception(TraceStatus status, Exception e) {
+        complete(status, e);
+    }
+
 
     //v2 추가
     public TraceStatus beginSync(TraceId beforeTraceId, String message){
@@ -29,9 +38,6 @@ public class HelloTraceV2 {
         log.info("[" + nextId.getId() + "]" + addSpace(START_PREFIX, nextId.getLevel()) + message);
 
         return new TraceStatus(nextId, startTimeMs, message);
-    }
-    public void end(TraceStatus status){
-        complete(status, null);
     }
 
     private void complete(TraceStatus status, Exception e){
@@ -50,7 +56,7 @@ public class HelloTraceV2 {
 
         StringBuilder stringBuilder = new StringBuilder();
         for(int i = 0 ; i <level ; i++){
-            stringBuilder.append((i== level -1) ? "|" + prefix : "|   ");
+            stringBuilder.append((i == level -1) ? "|" + prefix : "|   ");
         }
         return stringBuilder.toString();
     }
