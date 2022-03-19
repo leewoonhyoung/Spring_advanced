@@ -74,4 +74,5 @@ public class ThreadLocalLogTrace implements LogTrace{
         complete(status, e);
 
     }
+
 }
