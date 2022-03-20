@@ -3,7 +3,7 @@ package hello.proxy.app.v1;
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
-public class OrderControllerV1Impl implements OrderControllerV1 {
+public class OrderControllerV1Impl implements OrderControllerV1{
 
 
     private final OrderServiceV1 orderService;
@@ -15,6 +15,7 @@ public class OrderControllerV1Impl implements OrderControllerV1 {
     @Override
     public String request(String itemId) {
         orderService.orderItem(itemId);
+        log.info("나불렀니");
         return "ok";
     }
     @Override
