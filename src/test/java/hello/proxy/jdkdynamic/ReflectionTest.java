@@ -36,14 +36,13 @@ public class ReflectionTest {
 
     @Test
     void reflection1() throws Exception {
-        Class<?> classHello = Class.forName("hello.proxy.jdkdynamic.ReflectionTest$Hello");
+        Class<?> classHello = Class.forName("hello.proxy.jdkdynamic.ReflectionTest$Hello"); //1. class.forName을 통해 클래스 메타정보를 얻는다./
 
-        Target target = new Target();
+        Target target = new Target(); // callA 메서드, callB 메서드가 함유된 target 클래스(실제 인스턴스)를 얻는다.
 
         //callA 메서드 정보
-
-        Method methodCallA = classHello.getMethod("callA");
-        Object result1 = methodCallA.invoke(target);
+        Method methodCallA = classHello.getMethod("callA"); // classHello의 메타정보에서 callA를 꺼낸다.
+        Object result1 = methodCallA.invoke(target); // callA를 통해 획득한 메서드 매타정보[methodCallA.invoke()]를 통해 실제 인스턴스를 호출해낸다.
         log.info("result1={}", result1);
 
         //callB 메서드 정보
@@ -58,6 +57,7 @@ public class ReflectionTest {
         Class<?> classHello = Class.forName("hello.proxy.jdkdynamic.ReflectionTest$Target");
 
         Target target  = new Target(); //callA 메서드 , callB 메서드 함유
+
         Method methodCallA = classHello.getMethod("callA");
         // 로직
         dynamicCall(methodCallA, target);

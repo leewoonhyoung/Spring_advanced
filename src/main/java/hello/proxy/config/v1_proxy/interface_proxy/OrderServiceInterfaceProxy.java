@@ -25,6 +25,6 @@ public class OrderServiceInterfaceProxy implements OrderServiceV1 {
             logTrace.exception(status, e);
             throw e;
         }
-
     }
+
 }
