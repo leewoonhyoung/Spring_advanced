@@ -15,7 +15,6 @@ public class OrderControllerV1Impl implements OrderControllerV1{
     @Override
     public String request(String itemId) {
         orderService.orderItem(itemId);
-        log.info("나불렀니");
         return "ok";
     }
     @Override

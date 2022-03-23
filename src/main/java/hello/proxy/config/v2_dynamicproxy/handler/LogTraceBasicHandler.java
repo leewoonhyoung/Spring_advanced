@@ -20,15 +20,16 @@ public class LogTraceBasicHandler implements InvocationHandler {
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         TraceStatus status = null;
         try{
-            String message = method.getDeclaringClass().getSimpleName() + "." + method.getName() + "()";
+            String message = method.getDeclaringClass().getSimpleName() + "." + method.getName() + "()"; // 예를들어 OrderController.request() 같은 부분을 가져옴
             status = logTrace.begin(message);
 
-
             //로직 호출
-            method.invoke(target, args);
-
+            Object result = method.invoke(target, args); // args 인수가 넘어가면.
             logTrace.end(status);
             return result;
+        } catch (Exception e){
+            logTrace.exception(status, e);
+            throw e;
         }
     }
 }
