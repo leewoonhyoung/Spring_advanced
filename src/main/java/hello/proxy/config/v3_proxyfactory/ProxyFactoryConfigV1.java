@@ -9,6 +9,7 @@ import org.springframework.aop.Advisor;
 import org.springframework.aop.framework.ProxyFactory;
 import org.springframework.aop.support.DefaultPointcutAdvisor;
 import org.springframework.aop.support.NameMatchMethodPointcut;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -42,6 +43,8 @@ public class ProxyFactoryConfigV1 {
         proxyFactory.addAdvisor(getAdvisor(logTrace));
         OrderServiceV1 proxy = (OrderServiceV1) proxyFactory.getProxy();
         log.info("ProxyFactory proxy = {}, target={}", proxy.getClass(), orderServiceV1.getClass());
+
+        return proxy;
     }
 
    @Bean

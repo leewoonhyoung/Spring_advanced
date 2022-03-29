@@ -23,8 +23,6 @@ public class PackageLogTraceProxyPostProcessor implements BeanPostProcessor {
         log.info("param beanName={} bean={}", beanName, bean.getClass());
 
         //프록시 적용 대상 여부 체크
-
-
         //빈에서 packageName이 프록시 적용 대상 아니면 원본 그대로를 반환
         String packageName = bean.getClass().getPackageName();
         if(!packageName.startsWith(basePackage)){
